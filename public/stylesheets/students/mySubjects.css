@@ -1,0 +1,285 @@
+:root {
+  --main: #2f6083;
+  --accent: #3b78a3;
+  --green-btn: #529a2d;
+  --green-btn-light: #629c46;
+  --blue-btn: #2766be;
+  --blue-btn-light: #517fc0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-image: url("../../images/bg_bggenerator_com.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.mainContainer {
+  max-width: 100%;
+  min-height: 80vh;
+  max-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.nav {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--main);
+  color: white;
+  /* border: 1px solid var(--accent); */
+  border-radius: 10px 10px 0 0;
+}
+
+.nav > h1 {
+  flex: 1;
+}
+
+.nav > h3 {
+  padding: 3px;
+  margin: 2px;
+}
+
+.navButtons {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.navButtons > button,
+h1,
+h4,
+.li > h3,
+.li > div > button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.ul {
+  /*margin-top: 1px;
+  */
+  width: 100%;
+  max-width: 1200px;
+}
+
+.li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--accent);
+  border-radius: 5px;
+  background: white;
+  margin: 3px 0;
+}
+
+.li > h3,
+.subjectsButtons {
+  flex: 1;
+}
+
+.subjectsButtons {
+  display: flex;
+  justify-content: right;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.horariesSpans > Span {
+  margin: 0 1rem;
+}
+
+#showModal,
+#markAttendance {
+  color: white;
+  font-weight: bold;
+}
+#showModal {
+  background: var(--green-btn);
+}
+
+#showModal:hover {
+  background: var(--green-btn-light);
+}
+
+#markAttendance {
+  background: var(--blue-btn);
+}
+
+#markAttendance:hover {
+  background: var(--blue-btn-light);
+}
+
+.on-back {
+  opacity: 50%;
+}
+
+.modal-off {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s ease-in-out;
+}
+
+.div-modal > h1 {
+  color: white;
+  margin: 20px 0;
+}
+
+.div-modal {
+  /*height: 300px;
+    */
+  display: flex;
+  background: var(--main);
+  border-radius: 10px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.modal > .div-modal > form {
+  width: 350px;
+  height: 100px;
+  background: var(--main);
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px 50px 50px;
+  color: white;
+}
+
+.modal > .div-modal > form > input {
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.modal > .div-modal > form > div {
+  display: flex;
+}
+
+.modal > .div-modal > form > div > label,
+.modal > .div-modal > form > div > select,
+.modal > .div-modal > form > div > button {
+  padding: 5px;
+  margin: 5px;
+}
+
+.modal > .div-modal > form > div > select,
+.modal > .div-modal > form > div > button {
+  flex: 1;
+}
+
+.modal > .div-modal > form > div > button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: darkslategrey;
+  font-weight: bold;
+}
+
+#signUP {
+  color: white;
+  background: var(--green-btn);
+}
+
+#signUP:hover {
+  background: var(--green-btn-light);
+}
+
+#errorModal,
+#attendanceErrorModal {
+  min-width: 25rem;
+  min-height: 10rem;
+  background-color: rgb(212, 29, 29);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: absolute;
+  text-align: center;
+}
+
+#errorText,
+#attendanceErrorText {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  padding: 3px;
+}
+
+.closeErrorModalButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 3px;
+  background-color: black;
+  border-radius: 100%;
+  padding: 0.3rem 0.6rem;
+  color: white;
+  font-weight: 400;
+}
+
+.closeErrorModalButton:hover {
+  cursor: pointer;
+}
+
+.errorModal-on {
+  display: flex !important;
+}
+
+.inactiveSubject {
+  opacity: 0.5;
+}
+
+.msgDiv > span,
+.msgMark > span {
+  max-width: fit-content;
+  text-align: center;
+  font-size: 0.8rem;
+  margin: 0 auto;
+  display: none;
+}
+
+.msgDiv-on > span,
+.msgMark-on > span {
+  display: inherit;
+}
+
+.errorStyle {
+  color: tomato;
+}
+
+.okStyle {
+  color: var(--green-btn);
+}

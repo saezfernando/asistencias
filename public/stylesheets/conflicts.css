@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../images/bg_bggenerator_com.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.mainContainer {
+  max-width: 100%;
+  min-height: 80vh;
+  max-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+  padding: 10px;
+  color: white;
+  background: #2f6083;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.conflicts {
+  display: flex;
+  flex-direction: column;
+  min-width: 1200px;
+  align-items: center;
+  justify-content: center;
+  /* gap: 1rem; */
+}
+
+.conflicts > .conflict {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.conflicts > .conflict > h3,
+.conflicts > .conflict > span {
+  flex: 1;
+}
+
+.conflicts > .conflict > .subjects {
+  flex: 1.5;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 5px;
+  margin: 5px;
+}

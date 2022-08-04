@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        title Mis cursos
+        link(rel="icon" type="image/png" href="/images/favicon.ico")
+        link(rel="stylesheet" href="/stylesheets/proffessors/myCourses.css")
+        script(src="/javascript/professor.script.js") 
+
+    body
+        div.mainContainer
+            div.nav#nav 
+                h1=`${professor.first_name} ${professor.last_name}`
+                div.navButtons
+                    //-button(id="showModal" onclick="toggleInscripForm()") Anotarme a una materia
+                    button(onclick=`goToConflics()`) Ver conflictos
+                        //- a(href="/Conflicts") 
+                    button(onclick="logout();") Cerrar sesión
+            h2 Bienvenido
+            .nav 
+                h3  Mis cursos
+            ul.ul#ul
+                each course in COURSES 
+                    div.li 
+                        h3=course.name
+                        div.subjectsButtons
+                            a(href=`/Professor/course/${course.id}` id="courseHandler") Administrar

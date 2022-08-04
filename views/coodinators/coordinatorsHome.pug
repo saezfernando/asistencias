@@ -1,0 +1,82 @@
+doctype html
+html
+  head
+    title Materias
+    link(rel="icon" type="image/png" href="/images/favicon.ico")
+    link(rel="stylesheet", href="/stylesheets/coordinators/coordinator.css")
+    script(src="/javascript/coordinator.script.js" defer) 
+    
+  body
+    div.mainContainer
+        div.nav#nav 
+            h1=`${coordinator.first_name} ${coordinator.last_name}`
+            div.navButtons
+                button(onclick=`goToConflics()`) Ver conflictos
+                button(onclick=`toggleMngModal()`) Administrar
+                button(onclick="togglelAddSubjectModal()") Crear materia
+                button(onclick="toggleAddProfessorModal()") Crear profesor
+                button(onclick="logout();") Cerrar sesión
+
+        ul.ul#ul
+            div.li
+                    h3.liHeader Materia
+                    h3.liHeader.flexMinus Asistencia
+                    h3.liHeader.flexMinus Responsables 
+                    //- h3.blankH3.flexMinus
+            each subj in SUBJECTS 
+                div.li 
+                    h3=subj.name
+                    div.divCircles.flexMinus
+                        p=`${subj.average * 100}%`
+                        div(id="greenCircle" class=`circle ${subj.average >= 0.75 ? "activeCircle" : "inactiveCircle"}`)
+                        div(id="yellowCircle" class=`circle ${subj.average < 0.75 ? (subj.average >= 0.5 ? "activeCircle" : "inactiveCircle") : "inactiveCircle"}`)
+                        div(id="redCircle" class=`circle ${subj.average < 0.5 ? "activeCircle" : "inactiveCircle"}`)
+                    div.flexMinus
+                        select.profInCharge
+                            each prof in subj.Users
+                                option=`${prof.first_name} ${prof.last_name}`  
+                            
+                        
+    div(class="backModal")
+    div(class="modalManageSubject")
+        div.mngSubject
+            button(class="closeModal" onclick=`toggleMngModal()`) x
+            h3 Administracion de asignaciones
+            div
+                span(class="subjName titles") Materia
+                span.titles Profesores
+                span.titles Accion
+            each subj in SUBJECTS
+                div 
+                    span(class="subjName")=subj.name 
+                    select(id=`select${subj.id}`) 
+                        each prof in professors 
+                            option(value=prof.id)=`${prof.first_name} ${prof.last_name}`
+                    div.buttons
+                        button(class="linkProf" onclick=`linkProf(${subj.id})`) Añadir
+                        button(class="unlinkProf" onclick=`unlinkProf(${subj.id})`) Eliminar
+    div(class="modalAddProfessor")
+        div
+            button(class="closeModal" onclick=`toggleAddProfessorModal()`) x
+            form(method="POST")
+                h3 Datos del profesor
+                input(require onfocus="hideProfError()" type="number" placeholder="DNI" required="required" id="inp-dni")
+                input(require onfocus="hideProfError()" type="text" placeholder="Nombre" required="required" id="inp-firstName")
+                input(require onfocus="hideProfError()" type="text" placeholder="Apellido" required="required" id="inp-lastName")
+                input(require onfocus="hideProfError()" type="email" placeholder="Email" required="required" id="inp-email")
+                input(require onfocus="hideProfError()" type="password" placeholder="Contraseña" required="required" id="inp-pass")
+                span(class="addProfError") Revise los datos e intente nuevamente
+                button(class="createProf" onclick="createProfessor(event)") Crear 
+    div(class="modalAddSubject")
+        div
+            button(class="closeModal" onclick=`togglelAddSubjectModal()`) x
+            form(method="POST")
+                h3 Nueva materia 
+                input(require type="text" id="subjectName" name="name" placeholder="Materia" onfocus="hideSubjError()")
+                span(class="addSubjError") Ya existe una materia con este nombre
+                button(class="createSubj" onclick="createSubject(event)") Crear
+    div(class="errorModal")
+        div 
+            span 
+            button ok
+        

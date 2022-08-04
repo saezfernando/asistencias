@@ -1,0 +1,37 @@
+doctype html
+html
+  head
+    title Conflictos
+    link(rel="icon" type="image/png" href="/images/favicon.ico")
+    link(rel="stylesheet", href="/stylesheets/conflicts.css")
+    //- script(src="/javascript/student.script.js" defer) 
+  body
+    div.mainContainer
+        if conflicts.length == 0
+            h1 No se registran alumnos con conflictos de horarios
+        else
+            div.header 
+                h1 Alumnos con conflictos de horario
+                a(href="/")
+                    button() Inicio
+            ul.conflicts
+                li.conflict
+                        h3 Usuario 
+                        h3 Nombre
+                        h3 Apellido 
+                        h3 DNI 
+                        h3.subjects Materias conflicto
+                each conflict in conflicts
+                    //- li=JSON.stringify(conflict)
+                    li.conflict
+                        span=conflict.student.email
+                        span=conflict.student.first_name
+                        span=conflict.student.last_name
+                        span=conflict.student.dni
+                        .subjects 
+                            .subject 
+                                span=conflict.subjects[0].subject.name
+                                span=`${conflict.subjects[0].conflictHorary.startAt} - ${conflict.subjects[0].conflictHorary.endAt}`
+                            .subject 
+                                span=conflict.subjects[1].subject.name
+                                span=`${conflict.subjects[1].conflictHorary.startAt} - ${conflict.subjects[1].conflictHorary.endAt}`

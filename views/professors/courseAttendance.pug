@@ -1,0 +1,56 @@
+doctype html
+html
+    head
+        title=`Asistencias a ${subject.name}`
+        link(rel="icon" type="image/png" href="/images/favicon.ico")
+        link(rel="stylesheet" href="/stylesheets/proffessors/courseAttendance.css")
+        script(defer src="/javascript/professor.attendances.js") 
+    body
+        div.mainContainer
+            nav.nav#nav 
+                h1=`Asistencias a ${subject.name}`
+                div.navButtons
+                    a(href=`/Professor/course/${subject.id}`)
+                        button Volver atrás
+                    button(onclick="logout()") Cerrar sesión
+            section.section 
+                div.headersDiv 
+                    select(id="month" onchange="toggleMonth()")
+                        each month, index in MONTHS
+                            option(value=index)=monthsNames[index]
+                        //-option(value=1) Febrero
+                            option(value=2) Marzo
+                            option(value=3) Abril
+                            option(value=4) Mayo
+                            option(value=5) Junio
+                            option(value=6) Julio
+                            option(value=7) Agosto
+                            option(value=8) Septiembre
+                            option(value=9) Octubre
+                            option(value=10) Noviembre
+                            option(value=11) Diciembre
+                        //each month in MONTHS
+                            option(value=month.name)=month.name  
+                    a(href=`/Professor/course/${subject.id}/attendance/download`) 
+                        button(id="downloadExcel") Descargar excel
+                   
+                div.months
+                    each month, index in MONTHS
+                        div(id=`m${index}` class=`div ${index == 0 && "div-on"}`) 
+                            ul 
+                                li 
+                                    div
+                                        p.alumno Usuario
+                                        p.alumno Nombre
+                                        p.alumno Apellido
+                                        each day in month
+                                            p.day=`${day.getDate()}/${day.getMonth()+1}`
+                                each student in students
+                                    li 
+                                        div
+                                            p.alumno=student.email
+                                            p.alumno=student.first_name
+                                            p.alumno=student.last_name
+                                            each att in student.attParse[index]
+                                                p=att
+                                                

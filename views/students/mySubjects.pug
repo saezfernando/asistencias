@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    title Mis materias
+    link(rel="icon" type="image/png" href="/images/favicon.ico")
+    link(rel="stylesheet", href="/stylesheets/students/mySubjects.css")
+    script(src="/javascript/student.script.js" defer) 
+  body
+    div.mainContainer
+        nav.nav#nav 
+            h1=`${student.first_name} ${student.last_name}` 
+            div.navButtons
+                button(id="showModal" onclick="toggleInscripForm()") Anotarme a una materia
+                button(onclick="logout()") Cerrar sesión
+        h2#misMaterias Mis materias
+        .nav
+            h3 Hoy
+        ul.ul#ul
+            if activeSubjects.length == 0
+                div.li
+                    h4 No hay materias activas actualmente o ya marcó la asistencia en las disponibles
+            else
+                each subject in activeSubjects
+                    div.li 
+                        h4=`${subject.dataValues.name}`
+                        div(id=`span${subject.dataValues.id}` class="msgMark")
+                            span#msgMark
+                        div.subjectsButtons
+                            button(id="markAttendance" onclick=`markAttendance(${subject.dataValues.id})`) Marcar asistencia 
+        .nav
+            h3 Inactivas
+        ul.ul#ul
+            each subject in inactiveSubjects
+                div.li.inactiveSubject 
+                    h4=subject.name
+                    div.horariesSpans
+                        //- span=subject.Schedules
+                        each horary in subject.Schedules 
+                            span=`${horary.startAt}-${horary.endAt}`
+                    div.subjectsButtons
+        div(id="attendanceErrorModal")
+                    span(class="closeErrorModalButton" onclick="closeAttendanceErrorModal()") X
+                    span(id="attendanceErrorText")
+                    
+        .modal-off#modal
+            .div-modal
+                h1 Formulario de inscripción
+                form(method="POST")
+                    //-input(type="number" placeholder="DNI" required="required" id="inp-dni")
+                        input(type="text" placeholder="Nombre" required="required")
+                        input(type="email" placeholder="Email" required="required")
+                    div
+                        label Materia
+                        select(name="subjects" id="subjects" required="required")
+                            each subject in SUBJECTS
+                                option(value=subject.id)=subject.name
+                    div.msgDiv#msgDiv 
+                        span#msg 
+                    div 
+                        button(id="signUP" onclick="handleSignUpSubject(event)" type="submit") Anotarme 
+                        button(id="cancel" onclick="return toggleInscripForm()") Cancelar
+                //- div(id="errorModal")
+                //-     span(class="closeErrorModalButton" onclick="closeErrorModal()") X
+                //-     span(id="errorText")

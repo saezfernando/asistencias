@@ -1,0 +1,146 @@
+doctype html
+html
+  head
+    title=subject.name
+    link(rel="icon" type="image/png" href="/images/favicon.ico")
+    link(rel="stylesheet", href="/stylesheets/proffessors/course.css")
+    script(defer src="/javascript/professor.subject.script.js") 
+  body
+    div.mainContainer
+        nav.nav#nav 
+            h1(id=subject.id class="subjectName")=subject.name
+            div.navButtons
+                a(href=`/Professor/course/${subject.id}/attendances`) 
+                    button Ver asistencias 
+                a(href=`/Professor/course/${subject.id}/attendance/download`) 
+                    button(id="downloadExcel") Descargar excel                
+                a(href="/Professor")
+                    button Volver atrás
+                button(onclick="logout();") Cerrar sesión
+        h2 Administración
+        section
+            .nav 
+                h3 Nuevas inscripciones
+            if requests.length !== 0
+                ul.ul 
+                    li.headersLi
+                        div.name
+                            h4 Nombre
+                        div.name
+                            h4 Apellido
+                        div 
+                            h4 DNI
+                        div.email 
+                            h4 Usuario
+                        
+                        div
+                            h4 Respuesta
+                    each request in requests
+                        li.reqLi
+                            div.reqData.name 
+                                span=request.RegistrationOfUser.first_name
+                            div.reqData.name 
+                                span=request.RegistrationOfUser.last_name
+                            div.reqData 
+                                span=request.RegistrationOfUser.dni
+                            div.reqData.email 
+                                span=request.RegistrationOfUser.email
+                            div.requestButtonsDiv 
+                                button(id="acceptBtn" onclick=`acceptStudent(${request.RegistrationOfUser.id})`) Aceptar 
+                                button(id="declineBtn" onclick=`deleteStudent(${request.RegistrationOfUser.id})`) Rechazar
+            else 
+                h5 No hay solicitudes pendientes
+        section
+            .nav  
+                h3 Alumnos
+            if students.length !== 0
+                ul.ul 
+                    li.headersLi
+                        div.name
+                            h4 Nombre
+                        div.name
+                            h4 Apellido
+                        div 
+                            h4 DNI
+                        div.email 
+                            h4 Usuario
+                       
+                        div
+                            h4 Acción
+                    each student in students
+                        li.matriLi
+                            div
+                                div.reqData.name 
+                                    span=student.RegistrationOfUser.first_name
+                                div.reqData.name 
+                                    span=student.RegistrationOfUser.last_name
+                                div.reqData 
+                                    span=student.RegistrationOfUser.dni
+                                div.reqData.email 
+                                    span=student.RegistrationOfUser.email
+                                div.reqData.matriButtonsDiv 
+                                    button(id="dropOutBtn" onclick=`deleteStudent(${student.RegistrationOfUser.id})`) Dar baja
+                            if student.RegistrationOfUser.schdConflicts
+                                div.conflictsDiv 
+                                    div
+                                        span Superposición de horarios con: 
+                                    div 
+                                        each subject in matriculate.schdConflicts.subjects
+                                            span=subject
+
+            else    
+                h5 No hay alumnos inscriptos a la materia   
+        section  
+            .nav 
+                h3 Horarios de la materia
+            .schedule
+                
+                div.newHorary 
+                    h3 Nuevo horario
+                    div
+                        label Día
+                        select(name="day" id="dayOfWeek")
+                            option(value="Lunes") Lunes   
+                            option(value="Martes") Martes   
+                            option(value="Miercoles") Miercoles  
+                            option(value="Jueves") Jueves   
+                            option(value="Viernes") Viernes
+                    div
+                        label Empieza
+                        div(style={"display": "flex"})
+                            input(type="number" id="startAtHour" placeholder="Hora" min="8" max="20")
+                            label :   
+                            input(type="number" id="startAtMinutes" placeholder="Minutos" min="0" max="59")
+                    div
+                        label Termina
+                        div(style={"display": "flex"})
+                            input(type="number" id="endAtHour" placeholder="Hora" min="10" max="21")
+                            label : 
+                            input(type="number" id="endAtMinutes" placeholder="Minutos" min="0" max="60") 
+                    button(onclick="addHorary()") Agregar
+                //-div
+                    each schd in subject.Schedules
+                        div.horaries 
+                            h3=`${schd.dayOfWeek} de ${schd.startAt} a ${schd.endAt}` 
+                            button(onclick=`deleteHorary(${schd.id})`) X
+                ul.ul
+                    each schd in subject.Schedules
+                        li.horaries 
+                            span=`${schd.dayOfWeek} de ${schd.startAt} a ${schd.endAt}` 
+                            button(onclick=`deleteHorary(${schd.id})`) Eliminar
+
+                
+            .nav 
+                h3 Fechas excepcionales
+            .exceptedDays
+                div 
+                    h3 Nueva fecha
+                    input(type="date" id="exceptionalDate" min=`${new Date(Date.now()).toLocaleDateString()}`)
+                    button(id="addDateBtn" onclick="addExceptionalDate()") Añadir
+                ul.ul
+                    each date in exceptionalDates 
+                        li.horaries.auxLi 
+                            div.dates
+                                h3=`${date.day}/${date.month}`
+                                button#deleteDateBtn(onclick=`deleteExceptionalDate(${date.id})`) Eliminar
+

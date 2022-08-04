@@ -1,0 +1,50 @@
+extends layout
+block headers 
+  title Sistema de asistencias ULP 
+  link(rel="icon" type="image/png" href="images/favicon.ico")
+  link(rel='stylesheet', href='/stylesheets/index.css')
+  script(defer src="/javascript/index.js") 
+block content
+  .mainContainer
+    //-.imgIndex#imgIndex 
+      img(src="images/building_ulp.jpg", alt="Edificios de la ULP al pie de las sierras.")
+    .div#div
+      h1 Sistema de asistencias ULP
+      .main-buttons
+      .login 
+
+        form(method="post" class="form")
+          //- .form
+          //if message
+          span(id="span" class="login-error") Usuario o contraseña incorrectos
+          input(type="email" placeholder="Correo" id="emailLog" required="true" onfocus="fadeSpan()")
+          input(type="password" placeholder="Contraseña" id="passLog" required="true" onfocus="fadeSpan()")
+          button(id="login" onclick="ingresar(event);") Iniciar sesion
+          hr
+          //-input(type="button" value="Registrarme" onclick="showSingForm();")
+          button(onclick="return toggleSignForm();" /*onsubmit="()=>false;"*/) Registrarse
+    .modal-off#modal
+      .div-modal
+        h1 Formulario de registro
+        form( method="POST")
+          input(type="number" placeholder="DNI" required="required" id="inp-dni")
+          input(type="text" placeholder="Nombre" required="required" id="inp-firstName")
+          input(type="text" placeholder="Apellido" required="required" id="inp-lastName")
+          input(type="email" placeholder="Email" required="required" id="inp-email")
+          input(type="password" placeholder="Contraseña" required="required" id="inp-pass")
+          
+          div 
+            button(id="signUP" type="submit" onclick="return handleSubmit(event);") Registrarme 
+            button(id="cancel" onclick="return toggleSignForm();" onsubmit="()=>false;") Cancelar
+    if already
+      div(class="modal" id="signYes")
+        div(class="already") 
+          span Ya existe un usuario asociado a este correo/dni
+          button(onclick="fadeSignMessage()") ok
+    else if already == false
+      div(class="modal" id="signYes")
+        div(class="regSucces") 
+          span Registro exitoso
+          button(onclick="fadeSignMessage()") ok
+
+  

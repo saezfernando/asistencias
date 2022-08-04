@@ -1,0 +1,376 @@
+:root {
+  --main: #2f6083;
+  --accent: #3b78a3;
+  --green-btn: #529a2d;
+  --green-btn-light: #57883f;
+  --blue-btn: #2766be;
+  --blue-btn-light: #517fc0;
+  --red-btn: rgb(190, 54, 54);
+  --red-btn-light: rgb(179, 50, 50);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../images/bg_bggenerator_com.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.mainContainer {
+  max-width: 100%;
+  min-height: 80vh;
+  max-height: 100vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nav {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--main);
+  color: white;
+  /* border: 1px solid var(--accent); */
+  border-radius: 10px 10px 0 0;
+  /* position: fixed; */
+}
+
+.nav > h1 {
+  flex: 1;
+}
+
+.navButtons {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+.navButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+button,
+a,
+h1,
+h3,
+h5,
+ul,
+li,
+li > div {
+  padding: 5px;
+  margin: 5px;
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  /* font-weight: bold; */
+  font-size: 0.9rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+ul {
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.li {
+  width: 100%;
+  /* max-width: 00px; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.li > h3 {
+  /* width: 200px; */
+  font-size: 1rem;
+  text-align: center;
+  flex: 1;
+}
+
+.liHeader {
+  font-size: 1.3em !important;
+}
+
+.li:nth-child(n),
+.li > div {
+  padding: 5px;
+  margin: 5px;
+  flex: 1;
+}
+
+.li > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divCircles {
+  display: flex;
+  /* justify-content: left !important; */
+  align-items: center;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background: #000;
+  margin-left: 3px;
+  border: 0.01rem solid black;
+}
+
+#greenCircle {
+  background: rgb(13, 218, 13);
+}
+
+#yellowCircle {
+  background: yellow;
+}
+
+#redCircle {
+  background: red;
+}
+
+.activeCircle {
+  opacity: 100%;
+}
+
+.inactiveCircle {
+  opacity: 30%;
+}
+
+.profInCharge,
+.profInCharge > option {
+  width: 200px;
+  background-color: var(--main);
+  border-radius: 50px;
+  padding: 3px;
+  /* border: 1px solid black; */
+  border: none;
+  text-align: center;
+  color: white;
+}
+
+.subjectsButtons > button {
+  background: var(--blue-btn);
+  border-radius: 5px;
+  color: white;
+}
+
+.subjectsButtons > a:visited {
+  color: white;
+}
+
+.subjectsButtons > button:hover {
+  background: var(--blue-btn-light);
+}
+
+.flexMinus {
+  flex: 1;
+  justify-content: center;
+}
+
+/* .blankH3 {
+    max-width: 65px;
+    padding: 1px;
+} */
+.backModal,
+.modalManageSubject,
+.modalAddProfessor,
+.modalAddSubject,
+.errorModal {
+  position: absolute;
+  /* background: black; */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* ------Modal agregar profesor */
+
+.modalAddProfessor > div {
+  position: relative;
+  min-width: 400px;
+  /* min-height: 200px; */
+  padding: 10x;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+/*------------------------------------------------  */
+
+/*  -----------Modal agreagar materia*/
+.modalAddSubject > div {
+  background-color: white;
+  position: relative;
+  /* width: 400px;
+  height: 150px; */
+  /* padding: 10x; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.modalAddSubject > div > form {
+  /* width: 300px;
+  margin: 10px; */
+}
+
+/* ------------------------------------------------- */
+
+.modal-on {
+  display: flex;
+}
+
+.errorModal {
+  display: none;
+}
+
+.backModal {
+  background-color: white;
+  opacity: 0.5;
+}
+
+form,
+.mngSubject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background: var(--main);
+
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  padding: 10px;
+}
+
+.mngSubject {
+  padding: 10px;
+  /* align-items: flex-start; */
+  width: 600px;
+  position: relative;
+}
+
+.mngSubject > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+.titles {
+  text-align: center;
+}
+
+.mngSubject > div > span,
+.mngSubject > div > select,
+.mngSubject > div > div {
+  flex: 1;
+}
+
+.mngSubject > div > .buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.subjName {
+  width: 250px;
+  overflow-x: hidden;
+}
+
+form > input,
+form > button {
+  width: 250px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+form > button {
+  cursor: pointer;
+  font-weight: bold;
+  color: darkslategrey;
+}
+
+form > button:hover,
+.linkProf,
+.createProf,
+.createSubj {
+  background: var(--green-btn-light);
+  color: white;
+}
+
+.closeModal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  color: white;
+  /* border-radius: 50px; */
+  margin: 0;
+  padding: 2px 6px;
+  font-size: 1.1rem;
+}
+
+.closeModal:hover {
+  color: rgb(230, 102, 102);
+}
+
+.addSubjError,
+.addProfError {
+  width: 230px;
+  color: tomato;
+  font-weight: bold;
+  opacity: 90%;
+  display: none;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.error-on {
+  display: block;
+}

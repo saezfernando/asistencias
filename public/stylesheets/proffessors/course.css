@@ -1,0 +1,421 @@
+:root {
+  --main: #2f6083;
+  --accent: #3b78a3;
+  --green-btn: #529a2d;
+  --green-btn-light: #57883f;
+  --blue-btn: #2766be;
+  --blue-btn-light: #517fc0;
+  --red-btn: rgb(190, 54, 54);
+  --red-btn-light: rgb(179, 50, 50);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../images/bg_bggenerator_com.png");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.mainContainer {
+  max-width: 100%;
+  min-height: 80vh;
+  /* max-height: 100vh; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* .mainContainer > section:last-child {
+  border-bottom: 1px solid var(--main);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+} */
+
+.nav {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--main);
+  color: white;
+  border: 1px solid var(--main);
+  border-radius: 10px 10px 0 0;
+  /* position: fixed; */
+}
+
+.nav > h1 {
+  flex: 1;
+}
+
+.navButtons,
+section {
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: left;
+}
+
+.navButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+section {
+  width: 100%;
+  max-width: 1200px;
+  align-items: flex-start;
+  justify-content: center;
+  /* border-left: 1px solid var(--main);
+  border-right: 1px solid var(--main); */
+  /* border-radius: 5px; */
+  /* margin: 2px; */
+}
+
+button,
+h1,
+h3,
+h5,
+li > div {
+  padding: 5px;
+  margin: 5px;
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  /* font-weight: bold; */
+  font-size: 0.9rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
+section > div > button {
+  background: var(--blue-btn);
+  color: white;
+}
+
+section > div > button:hover {
+  background: var(--blue-btn-light);
+}
+
+ul,
+.schedule {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  background: white;
+  justify-content: flex-start;
+  max-width: 1000px;
+}
+
+.ul {
+  flex-direction: column;
+  max-width: fit-content;
+}
+
+li,
+.matriLi {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2rem;
+}
+
+.headersLi > div,
+.reqLi > div {
+  width: 200px;
+  /* flex: 1; */
+}
+
+.headersLi > div:last-child {
+  text-align: center;
+}
+
+.reqData {
+  font-size: 0.85rem;
+  color: black;
+  opacity: 90%;
+  flex: 1;
+}
+
+.matriLi {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.matriLi > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.matriLi > div > div {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+}
+
+.conflictsDiv {
+  display: flex;
+  max-width: 80%;
+  height: 30px;
+  padding: 0;
+  align-items: center;
+  justify-content: left;
+  font-size: 0.8rem;
+  background: var(--red-btn-light);
+  border: 1px solid var(--red-btn);
+  border-radius: 5px;
+  color: white;
+}
+
+.conflictsDiv > div {
+  height: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.conflictsDiv:nth-child(2) {
+  flex: 1;
+  display: flex;
+  width: 100%;
+}
+
+.conflictsDiv:nth-child(2) > div > span {
+  margin: 0 5px;
+  /* flex: 1; */
+}
+
+.conflictsDiv:first-child {
+  flex: 0.5;
+}
+/* .name,
+.email {
+  /* flex: 1.3; */ /*
+  width: 100%;
+  max-width: 200px;
+} */
+
+.requestButtonsDiv,
+.matriButtonsDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matriButtonsDiv {
+  justify-content: center;
+}
+
+.requestButtonsDiv > button,
+#dropOutBtn {
+  width: fit-content;
+}
+
+#acceptBtn {
+  color: white;
+  background: var(--green-btn);
+}
+
+#acceptBtn:hover {
+  background: var(--green-btn-light);
+}
+
+#declineBtn,
+#deleteDateBtn,
+#dropOutBtn {
+  background: var(--red-btn);
+  color: white;
+}
+
+#declineBtn:hover,
+#deleteDateBtn:hover,
+#dropOutBtn:hover {
+  background: var(--red-btn-light);
+}
+
+h5 {
+  color: var(--accent);
+  opacity: 50%;
+  margin-left: 30px;
+}
+
+.schedule,
+.exceptedDays {
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5px;
+  background: white;
+  /* margin: 5px; */
+}
+
+.scheduleDiv,
+.exceptedDays > div {
+  width: 100%;
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.exceptedDays > div {
+  max-width: 255px;
+  flex-direction: column;
+  margin-left: 0;
+}
+
+.scheduleDiv > label {
+  width: 100px;
+}
+
+select {
+  text-align: center;
+  padding: 2px;
+}
+
+.exceptedDays > div {
+  justify-content: flex-start;
+}
+
+.exceptedDays > div > input {
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+.dates {
+  width: 100%;
+  max-width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 !important;
+}
+
+.dates > h3 {
+  font-size: 0.9rem;
+  font-weight: 100;
+}
+
+.dates > button,
+.dates > div,
+.dates > h3 {
+  margin: 0 !important;
+}
+/* .bottomButtons {
+  border: none;
+} */
+
+#saveChangesBtn,
+#addDateBtn {
+  background: var(--green-btn);
+  color: white;
+}
+
+#saveChangesBtn:hover,
+#addDateBtn:hover {
+  background: var(--green-btn-light);
+}
+
+#downloadExcel {
+  background: var(--blue-btn);
+  color: white;
+}
+
+#downloadExcel:hover {
+  background: var(--blue-btn-light);
+  color: white;
+}
+.newHorary {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.newHorary > button {
+  padding: 5px;
+  background-color: #529a2d;
+  color: white;
+  width: fit-content;
+}
+
+.newHorary > button:hover {
+  background-color: #57883f;
+}
+
+.newHorary > div {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: 10px;
+}
+
+.newHorary > div > label {
+  width: 100px;
+}
+.newHorary > div > select {
+  width: 115px;
+}
+.newHorary > div > div > input {
+  padding: 0.1rem;
+  margin: 0.1rem;
+  width: 50px;
+  -moz-appearance: textfield;
+}
+
+.horaries {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* max-width: fit-content; */
+}
+
+.horaries > button {
+  color: white;
+  background: var(--red-btn);
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  width: fit-content;
+}
+
+.horaries > button:hover {
+  background: var(--red-btn-light);
+}
+
+.auxLi {
+  margin-left: 0 !important;
+}
